@@ -38,19 +38,12 @@ is_on = True
 
 #Functions
 
-def Check_Drink(choice):
-  ok = True
-  
-  for ing in MENU[choice]["ingredients"]:
-    
+def Check_Drink(choice):  
+  for ing in MENU[choice]["ingredients"]:    
     if MENU[choice]["ingredients"][ing] > resources[ing]:
-      ok = False
-    else: 
-      pass
-  if ok == True:
-    return True
-  else:
-    return False
+      return False
+  return True
+ 
 
 def Resources():
   for ing in MENU[choice]["ingredients"]:
@@ -85,7 +78,7 @@ while is_on is True:
 
   elif choice in ["espresso","latte","cappuccino"]:
     if Check_Drink(choice) == True:
-      pay = float(input(f"please insert money: £{MENU[choice]['cost']}"))
+      pay = float(input(f"please insert money: £{MENU[choice]['cost']}\n"))
       
       if pay >= MENU[choice]["cost"]:
         print (f"Here is your {choice}, enjoy! ☕")
